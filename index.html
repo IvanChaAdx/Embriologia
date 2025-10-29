@@ -14,7 +14,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-    min-height: auto; 
+      min-height: auto; 
       text-align: center;
     }
 
@@ -85,7 +85,6 @@
       display: none;
     }
 
-    /* 🔘 Botón de salir anclado abajo a la derecha */
     #exit-ar {
       position: fixed;
       bottom: 20px;
@@ -127,7 +126,6 @@
 </head>
 <body>
 
-  <!-- Sección principal -->
   <div id="info">
     <div class="titulo-con-imagenes">
       <img src="imagenes/medicina logo.png" alt="Logo Medicina">
@@ -142,7 +140,6 @@
 
   <button id="start-ar">Iniciar Realidad Aumentada</button>
 
-  <!-- 🔘 Botón con ícono de salida -->
   <button id="exit-ar">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M18.3 5.71a1 1 0 0 0-1.42 0L12 10.59 7.11 5.7a1 1 0 0 0-1.42 1.42L10.59 12l-4.9 4.89a1 1 0 0 0 1.42 1.42L12 13.41l4.89 4.9a1 1 0 0 0 1.42-1.42L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4z"/>
@@ -150,7 +147,6 @@
     Salir
   </button>
 
-  <!-- Contenedor para la escena AR -->
   <div id="ar-container"></div>
 
   <script>
@@ -165,12 +161,11 @@
       exitBtn.style.display = 'flex';
       arContainer.style.display = 'block';
 
-      // Crear la escena AR
       const scene = document.createElement('a-scene');
       scene.setAttribute('embedded', '');
       scene.setAttribute('arjs', '');
+      scene.setAttribute('gesture-detector', ''); // 👈 añadido
 
-      // Marcador 1 - testículo
       const marker1 = document.createElement('a-marker');
       marker1.setAttribute('preset', 'hiro');
       const model1 = document.createElement('a-entity');
@@ -181,7 +176,6 @@
       marker1.appendChild(model1);
       scene.appendChild(marker1);
 
-      // Marcador 2 - engranes
       const marker2 = document.createElement('a-marker');
       marker2.setAttribute('preset', 'kanji');
       const model2 = document.createElement('a-entity');
@@ -190,8 +184,6 @@
       marker2.appendChild(model2);
       scene.appendChild(marker2);
 
-      //marcador 3 - animación
-      //crear marker 3 para animación
       const marker3 = document.createElement('a-marker');
       marker3.setAttribute('type', 'pattern');
       marker3.setAttribute('url', 'markers/pattern-marcaCreeper.patt');
@@ -201,10 +193,10 @@
       model3.setAttribute('rotation', '0 0 0');
       model3.setAttribute('scale', '0.2 0.2 0.2');
       model3.setAttribute('animation-mixer', '');
+      model3.setAttribute('gesture-handler', ''); // 👈 añadido también
       marker3.appendChild(model3);
       scene.appendChild(marker3);
 
-      // Cámara
       const camera = document.createElement('a-entity');
       camera.setAttribute('camera', '');
       scene.appendChild(camera);
@@ -220,7 +212,6 @@
       startBtn.style.display = 'inline-block';
       exitBtn.style.display = 'none';
 
-      // Apagar cámara
       const video = document.querySelector('video');
       if (video && video.srcObject) {
         const stream = video.srcObject;
@@ -229,7 +220,6 @@
         video.srcObject = null;
       }
 
-      // 🔄 Recargar para asegurar liberación de cámara
       setTimeout(() => {
         window.location.reload();
       }, 300);
