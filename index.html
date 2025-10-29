@@ -122,6 +122,8 @@
   <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/fcor/arjs-gestures@master/gesture-detector.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/fcor/arjs-gestures@master/gesture-handler.js"></script>
 </head>
 <body>
 
@@ -175,6 +177,7 @@
       model1.setAttribute('gltf-model', 'models/embriologia/Testiculo45.glb');
       model1.setAttribute('scale', '0.2 0.2 0.2');
       model1.setAttribute('rotation', '-90 0 0');
+      model1.setAttribute('gesture-handler', '');
       marker1.appendChild(model1);
       scene.appendChild(marker1);
 
