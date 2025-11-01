@@ -177,7 +177,7 @@
 
       // Marcador 1 - testículo
       const marker1 = document.createElement('a-marker');
-      marker1.setAttribute('preset', 'hiro');
+      marker1.setAttribute('preset', 'pattern');
       const model1 = document.createElement('a-entity');
       model1.setAttribute('gltf-model', 'models/embriologia/Testiculo5-9-T3.glb');
       model1.setAttribute('scale', '0.2 0.2 0.2');
@@ -200,10 +200,10 @@
 
       // Marcador 3 - animación
       const marker3 = document.createElement('a-marker');
-      marker3.setAttribute('type', 'pattern');
+      marker3.setAttribute('type', 'hiro');
       marker3.setAttribute('url', 'markers/pattern-marcaCreeper.patt');
       const model3 = document.createElement('a-entity');
-      model3.setAttribute('gltf-model', 'models/embriologia/Pruebas.glb');
+      model3.setAttribute('gltf-model', 'models/embriologia/Testiculo5-9animacion.glb');
       model3.setAttribute('position', '0 0 0');
       model3.setAttribute('rotation', '0 0 0');
       model3.setAttribute('scale', '0.2 0.2 0.2');
